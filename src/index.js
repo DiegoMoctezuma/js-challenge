@@ -1,7 +1,12 @@
+document.addEventListener("DOMContentLoaded", () => {
+	loadData();
+});
+
 const $app = document.getElementById("app");
 const API = "https://api.escuelajs.co/api/v1/products";
 let minId = 5;
 let maxId = 15;
+let $observe;
 
 const getData = async () => {
 	try {
@@ -30,4 +35,34 @@ const printCard = (data) => {
 	});
 
 	cards.appendChild(fragment);
+
+	if (maxId < 200) {
+		if ($observe) {
+			intersectionObserver.unobserve($observe);
+		}
+
+		const cardsEnPantalla = document.querySelectorAll(".Items .Card");
+		$observe = cardsEnPantalla[cardsEnPantalla.length - 1];
+		intersectionObserver.observe($observe);
+	}
 };
+
+const loadData = () => {
+	getData();
+};
+
+const intersectionObserver = new IntersectionObserver(
+	(entries) => {
+		entries.forEach((ent) => {
+			if (ent.isIntersecting) {
+				maxId += 10;
+				minId += 10;
+				getData();
+			}
+		});
+	},
+	{
+		rootMargin: "0px 0px 100% 0px",
+		threshold: 1.0,
+	}
+);
