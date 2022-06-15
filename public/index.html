@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title></title>
+		<link type="text/css" href="styles.css" rel="stylesheet" />
+	</head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title></title>
-  <link type="text/css" href="styles.css" rel="stylesheet">
-</head>
+	<body>
+		<div class="Main">
+			<h1>PlatziStore</h1>
+			<div id="app">
+				<div class="Items" id="items"></div>
+			</div>
+		</div>
 
-<body>
-  <div class="Main">
-    <h1>PlatziStore</h1>
-    <div id="app"></div>
-    <div id="observe"></div>
-  </div>
-</body>
+		<template id="templateCard">
+			<article class="Card" id="observe">
+				<img id="cardImg" src="imagen.png" />
+				<div class="Description">
+					<h2 id="cardName">Producto</h2>
+					<h3 id="cardId">Id</h3>
+					<p id="cardPrice">Precio: $<span>000</span></p>
+				</div>
+			</article>
+		</template>
+	</body>
 
-<script type="text/javascript" src="../src/index.js"></script>
-
+	<script type="text/javascript" src="../src/index.js"></script>
 </html>
